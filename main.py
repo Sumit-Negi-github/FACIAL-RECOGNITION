@@ -303,22 +303,22 @@ for iteration in range(total_iteration):
         
         # Accuracy by measuring the average closest distance from a person.
         correct_predicted,prediction_array_average = accuracy_average_closest_distance(test_projection_matrix, train_projection_matrix,
-                                                                                                                                                                   test_image_list, train_image_list, top_k_eigenfaces)
+                                                                                       test_image_list, train_image_list, top_k_eigenfaces)
         accuracy_average_case.append(correct_predicted/n_test)
 
         #Accuracy by observing the closest matching person (can say k means with k=1)
         correct_predicted,prediction_array_closest_matching = accuracy_closest_matching_person(test_projection_matrix, train_projection_matrix,
-                                                                                                                                                                                   test_image_list, train_image_list, top_k_eigenfaces)
+                                                                                               test_image_list, train_image_list, top_k_eigenfaces)
         accuracy_closest_matching_case.append(correct_predicted/n_test)
 
         #Accuracy according to kmeans with parameter no_nearest_neighbor=5
         correct_predicted,prediction_array_knn = accuracy_knn(test_projection_matrix, train_projection_matrix, test_image_list, train_image_list,
-                                                                                                                 top_k_eigenfaces,KNN_parameter)
+                                                              top_k_eigenfaces,KNN_parameter)
         accuracy_knn_case.append(correct_predicted/n_test)
 
         # Accuracy by hybrid case.
         correct_predicted,prediction_array_hybrid = accuracy_hybrid(test_projection_matrix, train_projection_matrix, test_image_list, train_image_list,
-                                                                                                                             top_k_eigenfaces,prediction_array_average,prediction_array_closest_matching)
+                                                                   top_k_eigenfaces,prediction_array_average,prediction_array_closest_matching)
         accuracy_hybrid_case.append(correct_predicted/n_test)
 
 print("Accuracy by average distance case (method 1) :",accuracy_average_case) 
